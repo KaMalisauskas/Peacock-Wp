@@ -74,7 +74,8 @@ if( isset($sidebars) && !empty($sidebars) ) {
 // Custom posts
 
 $themePostTypes = array(
-'Img_links' => 'Img_link'
+'Img_links' => 'Img_link',
+'Home_Posts' => 'Home_Post'
 
 );
 
@@ -157,4 +158,7 @@ function our_awesome_menu($menu_id, $menu_class, $location) {
 		"menu" => $location
 	]);
 }
+//adding image sizes
+
+add_image_size("gallery", '1000', '700', true);
 ?>
