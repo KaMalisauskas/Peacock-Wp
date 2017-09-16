@@ -15,9 +15,13 @@ function theme_scripts(){
     if ( !is_admin() ) {
 
         wp_deregister_script('jquery');
+				wp_register_script('gallery', ASSETS_URL . '/assets/Js/gallery.js', false, '1.0', true);
+
 				wp_register_script('jquery', ASSETS_URL . '/assets/Js/jquery-3.2.1.min.js', false, false, true);
 
-        wp_register_script('js_main', ASSETS_URL . '/assets/js/index.js', array('jquery'), '1.0', true);
+        wp_register_script('js_main', ASSETS_URL . '/assets/Js/index.js', array('jquery','gallery'), '1.0', true);
+
+
         wp_enqueue_script('js_main');
     }
 }
@@ -75,7 +79,8 @@ if( isset($sidebars) && !empty($sidebars) ) {
 
 $themePostTypes = array(
 'Img_links' => 'Img_link',
-'Home_Posts' => 'Home_Post'
+'Home_Posts' => 'Home_Post',
+'Galleries' => 'Galary'
 
 );
 
@@ -160,5 +165,5 @@ function our_awesome_menu($menu_id, $menu_class, $location) {
 }
 //adding image sizes
 
-add_image_size("gallery", '1000', '700', true);
+add_image_size("gallery", '900', '700', true);
 ?>

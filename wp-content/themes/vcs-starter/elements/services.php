@@ -20,43 +20,61 @@
 
           <?php endwhile; ?>
         <?php endif ?>
-        <h2>Other services</h2>
 
-        <h3>Daily schedule:</h3>
-            <img src="../images/ajurveda-flower.jpg" alt="Flower">
-        <ul>
-          <li>6.30 - 7.30 : Yoga class</li>
-          <li>8:00 –  9:00 : Breakfast</li>
-          <li>9:00 –  9:30 : Daily doctor‘s consultation</li>
-          <li>9:00 – 12:30 : Ayurveda treatments</li>
-          <li>13:00 – 14:00 : Lunch</li>
-          <li>14:00 – 16:30 : Ayurveda treatments</li>
-          <li>17:30 – 18:30 : Dinner</li>
-          <li>21:00 – 06:30 : Rest and silence time</li>
+        <?php $services = get_field('p_s_services'); if($services): ?>
+          <h2><?php the_field('p_s_services'); ?></h2>
 
-        </ul>
+          <?php $schedule = get_field('p_s_schedule_name'); if ($schedule): ?>
+            <h3><?php the_field('p_s_schedule_name'); ?></h3>
+            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="Flower">
+            <?php if( have_rows('p_s_schedule') ):?>
 
-        <h3>Your beauty in the hands of Ayurvedic medicine</h3>
+                <ul>
+                <?php while ( have_rows('p_s_schedule') ) : the_row(); ?>
 
-        <p class="services">Peacock Ayurveda Garden also provides the following services:</p>
-        <ul>
-          <li>Free transportation from the resort to the beach and the town of Dickwella (about 8 min.)</li>
-          <li>Transportation to any destination of your choice and short sightseeing tours (for extra fee)</li>
-          <li>Transfer to and from Colombo airport (190 km) – €85 per trip</li>
-          <li>Transfer to and from Mattala airport (90 km) – €45 per trip</li>
-        </ul>
-        <p><strong>Note:</strong> If transfer is provided for more than 1 passenger, the price will be divided according to the number of passengers.</p>
+                  <li><?php the_sub_field('p_s_s_daily_plan'); ?></li>
 
-        <div class="room_gallery">
-          <div class="room_img_container">
-            <img src="../images/procedure.jpg" alt="Room">
-          </div>
-          <div class="room_img_container">
-            <img src="../images/bungalo.jpg" alt="Room">
-          </div>
-          <div class="room_img_container">
-            <img src="../images/yoga.jpg" alt="Room">
-          </div>
-        </div>
+                <?php endwhile; ?>
+                </ul>
 
+            <?php endif; ?>
+          <?php endif; ?>
+
+          <?php $add_services = get_field('p_s_aditional_services_header'); if ($add_services): ?>
+            <h3><?php the_field('p_s_aditional_services_header'); ?></h3>
+
+            <?php $intro_service = get_field('p_s_start_of_aditional_list'); if ($intro_service): ?>
+              <p class="services"><?php the_field('p_s_start_of_aditional_list'); ?></p>
+            <?php endif; ?>
+            <!-- start of a repeater -->
+            <?php if( have_rows('p_s_aditional_services') ):?>
+              <ul>
+                  <?php while ( have_rows('p_s_aditional_services') ) : the_row(); ?>
+
+                    <li><?php the_sub_field('p_s_as_aditional_service');?>;</li>
+
+                  <?php endwhile; ?>
+              </ul>
+            <?php endif; ?>
+
+          <?php endif; ?>
+
+          <?php $add_services = get_field('p_s_aditional_services_header'); if ($add_services): ?>
+            <p><strong>Note:</strong> <?php the_field('p_s_note'); ?></p>
+          <?php endif; ?>
+
+          <?php if( have_rows('p_s_end_page_pictures') ):?>
+            <div class="room_gallery">
+              <?php while ( have_rows('p_s_end_page_pictures') ) : the_row(); ?>
+                <!-- getting img array, to maintain same resolution -->
+                <?php $img = get_sub_field('p_s_epp_img');?>
+                <div class="room_img_container">
+                  <img src="<?php echo $img["sizes"]["gallery"]?>" alt="Room">
+                </div>
+
+              <?php endwhile; ?>
+            </div>
+          <?php endif; ?>
+
+        <?php endif; ?>
   </div>

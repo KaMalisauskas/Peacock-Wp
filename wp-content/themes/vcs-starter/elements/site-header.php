@@ -11,7 +11,7 @@
 
 
     </nav>
-    <a href="#"><img src="<?php the_field("logo", "option"); ?>" alt="Logo"></a>
+    <a href="<?php echo home_url(); ?>"><img src="<?php the_field("logo", "option"); ?>" alt="Logo"></a>
     <div class="insertPicture" id="fade">
     </div>
   </div>

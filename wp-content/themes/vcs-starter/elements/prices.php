@@ -13,7 +13,7 @@
         <th><?php the_field('p_p_cheap_period'); ?></th>
       </tr>
    <?php if( have_rows('p_p_prices_info') ):?>
-
+  
     <?php while ( have_rows('p_p_prices_info') ) : the_row(); ?>
 
             <tr>
@@ -40,6 +40,7 @@
   <?php $content = the_content(); if($content): ?>
 
     <h3>The prices includes:</h3>
+<p>oji</p>
 
     <div class="prc_include">
       <?php the_content(); ?>
