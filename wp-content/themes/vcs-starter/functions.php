@@ -17,9 +17,11 @@ function theme_scripts(){
         wp_deregister_script('jquery');
 				wp_register_script('gallery', ASSETS_URL . '/assets/Js/gallery.js', false, '1.0', true);
 
-				wp_register_script('jquery', ASSETS_URL . '/assets/Js/jquery-3.2.1.min.js', false, false, true);
+				wp_register_script('faddingIntro', ASSETS_URL . '/assets/Js/faddingIntro.js', false, '1.0', false);
 
-        wp_register_script('js_main', ASSETS_URL . '/assets/Js/index.js', array('jquery','gallery'), '1.0', true);
+				wp_register_script('jquery', ASSETS_URL . '/assets/Js/jquery-3.2.1.min.js', false, false, false);
+
+        wp_register_script('js_main', ASSETS_URL . '/assets/Js/index.js', array('jquery','faddingIntro','gallery'), '1.0', true);
 
 
         wp_enqueue_script('js_main');
